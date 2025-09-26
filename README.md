@@ -243,8 +243,9 @@ dona-antonieta-site/
 ## 📞 **Contato para Suporte**
 
 Para dúvidas técnicas ou melhorias no site:
-- **WhatsApp**: (11) 95295-7726
-- **Email**: gil.teuga25@gmail.com
+- **WhatsApp**: (11) 94568-8124
+- **Email**: manuelportela@cloudmatrix.com.br
+- **Site**: https://cloudmatrix.com.br
 
 ---
 
