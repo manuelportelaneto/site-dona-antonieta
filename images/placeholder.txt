@@ -1,0 +1,9 @@
+Esta pasta contém as imagens do site da Dona Antonieta.
+
+Imagens necessárias:
+- hero-bg.jpg (imagem de fundo do hero)
+- antonieta-1.jpg, antonieta-2.jpg, antonieta-3.jpg (carrossel)
+- gilberto-lima.jpg (foto do artista)
+- gallery-1.jpg até gallery-6.jpg (galeria de fotos)
+
+Todas as imagens quebradas serão substituídas automaticamente por placeholders coloridos através do JavaScript.
