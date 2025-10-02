@@ -361,3 +361,83 @@ function showTestimonial(index) {
     
     currentTestimonialIndex = index;
 }
+
+// ===== LÓGICA DO BANNER DE CONSENTIMENTO DE COOKIES =====
+function initializeCookieConsent() {
+    const banner = document.getElementById('cookie-consent-banner');
+    const acceptBtn = document.getElementById('accept-cookies-btn');
+
+    if (!banner || !acceptBtn) {
+        return;
+    }
+
+    // Verifica se o usuário já consentiu antes
+    const consentGiven = localStorage.getItem('cookie_consent_given');
+
+    if (!consentGiven) {
+        // Se não consentiu, mostra o banner após um pequeno atraso
+        setTimeout(() => {
+            banner.classList.add('show');
+        }, 1000); // 1 segundo
+    }
+
+    // Quando o botão "Entendi" é clicado
+    acceptBtn.addEventListener('click', () => {
+        // Esconde o banner
+        banner.classList.remove('show');
+        
+        // Salva a preferência no armazenamento local do navegador
+        // O valor 'true' ficará salvo mesmo que o usuário feche e abra o site novamente
+        localStorage.setItem('cookie_consent_given', 'true');
+    });
+}
+
+// Garante que a função seja chamada quando o site carregar
+document.addEventListener('DOMContentLoaded', initializeCookieConsent);
+
+// ===== LÓGICA DO MODAL DE PRIVACIDADE =====
+function initializePrivacyModal() {
+    const openModalLink = document.getElementById('open-privacy-modal');
+    const closeModalBtn = document.getElementById('close-privacy-modal');
+    const modalBackdrop = document.getElementById('privacy-modal-backdrop');
+    const modalContent = document.getElementById('privacy-modal-content');
+
+    if (!openModalLink || !closeModalBtn || !modalBackdrop || !modalContent) {
+        return;
+    }
+
+    function openModal() {
+        modalBackdrop.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Impede o scroll da página
+    }
+
+    function closeModal() {
+        modalBackdrop.classList.remove('active');
+        document.body.style.overflow = 'auto'; // Restaura o scroll
+    }
+
+    // Abrir o modal ao clicar em "Saiba mais"
+    openModalLink.addEventListener('click', (e) => {
+        e.preventDefault(); // Impede o link de pular para o topo da página
+        openModal();
+    });
+
+    // Fechar o modal no botão 'X'
+    closeModalBtn.addEventListener('click', closeModal);
+
+    // Fechar o modal ao clicar no fundo (backdrop)
+    modalBackdrop.addEventListener('click', closeModal);
+
+    // Impedir que o clique DENTRO do modal o feche
+    modalContent.addEventListener('click', (e) => e.stopPropagation());
+    
+    // Fechar com a tecla 'Escape'
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalBackdrop.classList.contains('active')) {
+            closeModal();
+        }
+    });
+}
+
+// Adicionar a nova função na inicialização principal
+document.addEventListener('DOMContentLoaded', initializePrivacyModal);
